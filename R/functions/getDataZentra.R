@@ -13,7 +13,6 @@ getDataZentra <- function(token,var='Water Content',port,time_span=c(now(),now()
               ))
 
   data <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
-  print(data)
   varPos <- which(var == names(data[['data']]))
   ports <- unlist(sapply(data[['data']][[varPos]],'[[',1)[3,])
   idPort <- which(ports == port)
