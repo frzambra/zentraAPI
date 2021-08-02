@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDataZentra.R
 \name{getDataZentra}
 \alias{getDataZentra}
-\title{Function to get data from the API of zentracloud.com}
+\title{Get data from the API of zentracloud.com}
 \usage{
 getDataZentra(
   token,
@@ -15,7 +15,7 @@ getDataZentra(
 \arguments{
 \item{token}{token get from zentracloud API}
 
-\item{var}{which variable you want to get they could be
+\item{var}{which variable you want to get, they could be
 "Air Temperature","Atmospheric Pressure","Battery Percent",
 "Battery Voltage","Gust Speed","Lightning Activity",
 "Lightning Distance","Logger Temperature","Max Precip Rate"
@@ -32,10 +32,10 @@ getDataZentra(
 \item{time_span}{vector of two having time range for which the data is required}
 }
 \value{
-
+tibble
 }
 \description{
-Function to get data from the API of zentracloud.com
+Get data from the API of zentracloud.com
 }
 \examples{
 # Get data of VPD for the last five days

@@ -1,7 +1,7 @@
-#' Function to get data from the API of zentracloud.com
+#' Get data from the API of zentracloud.com
 #'
 #' @param token token get from zentracloud API
-#' @param var which variable you want to get they could be
+#' @param var which variable you want to get, they could be
 #'  "Air Temperature","Atmospheric Pressure","Battery Percent",     
 #' "Battery Voltage","Gust Speed","Lightning Activity",   
 #' "Lightning Distance","Logger Temperature","Max Precip Rate"      
@@ -15,6 +15,7 @@
 #' @param time_span vector of two having time range for which the data is required
 #'
 #' @return
+#' tibble 
 #' @export
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET add_headers content
