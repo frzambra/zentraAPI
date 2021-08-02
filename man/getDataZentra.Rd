@@ -18,11 +18,16 @@ getDataZentra(
 
 \item{port}{the port number of sensor}
 
-\item{time_span}{vector of two having time range in which the data is required}
+\item{time_span}{vector of two having time range for which the data is required}
 }
 \value{
 
 }
 \description{
 Function to get data from the API of zentracloud.com
+}
+\examples{
+# Get data of VPD for the last five days
+# token <- my_token
+# VPD_data <- getDataZentra(token,var = "VPD",port =1)
 }

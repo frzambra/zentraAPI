@@ -10,7 +10,12 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET add_headers content
 #' @importFrom lubridate now days
+#' @importFrom tibble tibble
 #' @examples
+#' # Get data of VPD for the last five days
+#' # token <- my_token
+#' # VPD_data <- getDataZentra(token,var = "VPD",port =1)
+
 getDataZentra <- function(token,var='Water Content',port,time_span=c(now(),now()-days(5))){
   url = "https://zentracloud.com/api/v3/get_readings/"
   resp <- GET(url,
@@ -23,18 +28,19 @@ getDataZentra <- function(token,var='Water Content',port,time_span=c(now(),now()
 
   data <- fromJSON(content(resp, "text"), simplifyVector = FALSE)
   
-  if (names(data) == 'detail') stop(data$detail)
+  if (names(data)[1] == 'detail') stop(data$detail)
   
   varPos <- which(var == names(data[['data']]))
   ports <- unlist(sapply(data[['data']][[varPos]],'[[',1)[3,])
   idPort <- which(ports == port)
-  time <- .parseZENTRA(varPos,idPort,"datetime")
-  value <- .parseZENTRA(varPos,idPort,"value")
+  time <- .parseZENTRA(data,varPos,idPort,"datetime")
+  value <- .parseZENTRA(data,varPos,idPort,"value")
   units <- sapply(data[['data']][[varPos]],'[[',1)[6,idPort]
   
   tibble(time,value,units$units)
 }
 
+#' @export
 .parseZENTRA <- function(x,varPos,idPort,reading){
   sapply(x[['data']][[varPos]][[idPort]][[2]],'[[',reading)
 }
