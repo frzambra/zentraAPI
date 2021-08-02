@@ -7,6 +7,7 @@
 getDataZentra(
   token,
   var = "Water Content",
+  device_sn = "z6-10293",
   port,
   time_span = c(now(), now() - days(5))
 )
@@ -14,7 +15,17 @@ getDataZentra(
 \arguments{
 \item{token}{token get from zentracloud API}
 
-\item{var}{which variable you want to get}
+\item{var}{which variable you want to get they could be
+"Air Temperature","Atmospheric Pressure","Battery Percent",
+"Battery Voltage","Gust Speed","Lightning Activity",
+"Lightning Distance","Logger Temperature","Max Precip Rate"
+"Precipitation","RH Sensor Temp","Reference Pressure",
+"Saturation Extract EC","Soil Temperature","Solar Radiation",
+"VPD", "Vapor Pressure", "Water Content",
+"Wind Direction","Wind Speed","X-axis Level"
+"Y-axis Level"}
+
+\item{device_sn}{the name of the z6 datalogger}
 
 \item{port}{the port number of sensor}
 
